@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch</title>
+
+    <style>
+        h2{border: 1px solid black;}
+    </style>
+</head>
+<body>
+    <h2>fetch</h2>
+
+    <script>
+        fetch('https://www.7timer.info/bin/astro.php?lon=113.2&lat=23.1&ac=0&unit=metric&output=json&tzshift=0')
+            .then((response) => response.json())
+            .then((data) => {
+                document.write('<h2 style="font-size: 30px; margin-left: 47%; margin-top: 20px;">fetch</h2>')
+                document.write('<hr>')
+                document.write("<table border='1' style='margin: 0 auto;'>");
+                document.write("<tr style='background-color: rgb(196, 196, 196);'>")
+                document.write("<th>num</th>")
+                document.write("<th>cloudcover</th>")
+                document.write("<th>lifted_index</th>")
+                document.write("<th>prec_type</th>")
+                document.write("<th>rh2m</th>")
+                document.write("<th>seeing</th>")
+                document.write("<th>temp2m</th>")
+                document.write("<th>timepoint</th>")
+                document.write("<th>transparency</th>")
+                document.write("</tr>")
+
+                const data_arr = data.dataseries
+
+                for(let i=0; i<24; i++){
+                    document.write("<tr>")
+                    document.write('<td>')
+                    document.write(i)
+                    document.write('</td>')
+                    document.write('<td>')
+                    document.write(data_arr[i]["cloudcov'er"])
+                    document.write('</td>')
+                    document.write('<td>') 
+                    document.write(data_arr[i]["lifted_index"])
+                    document.write('</td>')   
+                    document.write('<td>') 
+                    document.write(data_arr[i]["prec_type"])
+                    document.write('</td>')  
+                    document.write('<td>') 
+                    document.write(data_arr[i]["rh2m"])
+                    document.write('</td>')   
+                    document.write('<td>') 
+                    document.write(data_arr[i]["seeing"])
+                    document.write('</td>') 
+                    document.write('<td>') 
+                    document.write(data_arr[i]["temp2m"])
+                    document.write('</td>') 
+                    document.write('<td>') 
+                    document.write(data_arr[i]["timepoin"])
+                    document.write('</td>') 
+                    document.write('<td>') 
+                    document.write(data_arr[i]["transparency"])
+                    document.write('</td>') 
+                    document.write("</tr>")
+                }
+                document.write("</table>")
+            })
+    </script>
+</body>
+</html>
